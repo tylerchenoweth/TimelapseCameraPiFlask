@@ -1,10 +1,13 @@
-from app import app
+from app import app, picam2
 from flask import Response
 import datetime
 
 # For the camera streaming
 import cv2
-from picamera2 import Picamera2
+# from picamera2 import Picamera2
+
+from app import picam2  # ✅ Import the initialized Picamera2 instance
+
 
 @app.route('/')
 def home():
@@ -21,8 +24,8 @@ def log_message():
 
 
 # For streaming
-picam2 = Picamera2()
-picam2.start()
+# picam2 = Picamera2()
+# picam2.start()
 
 def generate_frames():
     while True:
@@ -34,4 +37,5 @@ def generate_frames():
 
 @app.route('/stream')
 def video_feed():
+    app.logger.info("Stream route accessed")
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')

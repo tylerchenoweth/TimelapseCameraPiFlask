@@ -23,17 +23,15 @@ from flask import render_template
 
 
 
+@app.route('/')
+def dasboard(): 
+    return render_template('dashboard.html', context = get_display_stats())
 
 
 @app.route('/stream')
 def stream():
     app.logger.info("Stream route accessed")
     return Response(generate_frames(),  mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
-
-
-
 
 
 @app.route('/stats')
@@ -48,9 +46,7 @@ def stats():
 
 
 
-@app.route('/')
-def dasboard(): 
-    return render_template('htmlpage.html', context = get_display_stats())
+
 
 
 

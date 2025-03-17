@@ -1,6 +1,5 @@
 // Function to determine the status color based on benchmarks
 function getStatusColor(value, type, total) {
-    console.log(type)
     if (type === "cpu_temp") {
         if (value < 50) return "green";
         if (value < 65) return "yellow";

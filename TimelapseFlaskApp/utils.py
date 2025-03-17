@@ -91,14 +91,17 @@ def getTime():
 def fuck():
     # os.system("clear")
     print("Making folder for images...")
-    folderName = getTime()
-    os.makedirs(folderName, exist_ok=True)
+    allTimelapses = "Timelapses"
+    timelapseFolder = getTime()
+
+    os.makedirs(allTimelapses, exist_ok=True)
+    os.makedirs(f"{allTimelapses}/{timelapseFolder}", exist_ok=True)
 
     counter = 0
 
     while True:
         
-        picam2.capture_file(f"./{folderName}/timelapse_{counter}.jpg")  # Capture and save an image
+        picam2.capture_file(f"./{allTimelapses}/{timelapseFolder}/timelapse_{counter}.jpg")  # Capture and save an image
         print(f"Image saved as {counter}.jpg")
         counter += 1
         

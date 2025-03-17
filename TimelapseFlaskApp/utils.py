@@ -30,7 +30,7 @@ def get_cpu_temp():
     try:
         temp = os.popen("vcgencmd measure_temp").readline()
         clean_temp = temp.replace("'C", "").strip()
-        # print(f"***\n\n\n{temp}\n\n\n*****")
+
         return clean_temp.replace("temp=", "").strip()
     except:
         return "N/A"
@@ -46,6 +46,7 @@ def get_ram_usage():
     ram = psutil.virtual_memory()
     used = ram.used // (1024 * 1024)  # Convert to MB
     total = ram.total // (1024 * 1024)  # Convert to MB
+
     return used, total
 
 
@@ -93,12 +94,7 @@ def fuck():
     folderName = getTime()
     os.makedirs(folderName, exist_ok=True)
 
-
-    # picam2 = Picamera2()  # Initialize camera
-    # picam2.start()  # Start the camera
-
     counter = 0
-    print("\n\n\n\n\n\n\n HELLO \n\n\n\n\n\n\n\n")
 
     while True:
         
